@@ -15,14 +15,13 @@ class TamanhoDeProduto(typesystem.Enum):
 
 
 class Produto(typesystem.Object):
-    # Se quiser customizar, use letra minúscula (boolean em vez de Boolean)
+    # Se quiser customizar, use letra minúscula (string em vez de String)
+    required = ['nome', 'nota', 'tamanho']
     properties = {
         'nome': typesystem.string(description='Nome, cara. Nome.', min_length=1, max_length=100),
         'nota': Nota,
-        'em_estoque': typesystem.Boolean,
         'tamanho': TamanhoDeProduto,
     }
-    required = ['nome', 'nota', 'tamanho']
 
 
 class CPFField(typesystem.String):
