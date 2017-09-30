@@ -18,3 +18,10 @@ def criar_produto(produto: schemas.Produto, session: Session):
     db_produto = session.Produto(**produto)
     db_produto.save()
     return http.Response(content=schemas.Produto(db_produto.__dict__), status=201)
+
+
+def listar_produtos(session: Session, nota=None):
+    produtos = session.Produto.objects.all()
+    if nota:
+        produtos = produtos.filter(nota=nota)
+    return [schemas.Produto(db_produto.__dict__) for db_produto in produtos]
