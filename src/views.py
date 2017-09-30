@@ -25,3 +25,7 @@ def listar_produtos(nota: schemas.Nota, session: Session):
     if nota is not None:
         produtos = produtos.filter(nota=nota)
     return [schemas.Produto(db_produto.__dict__) for db_produto in produtos]
+
+
+def valida_cpf(cpf: schemas.CPF):
+    return cpf
