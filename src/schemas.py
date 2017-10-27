@@ -43,3 +43,14 @@ class CPF(typesystem.Object):
     properties = {
         'cpf': CPFField
     }
+
+
+class Username(typesystem.String):
+    min_length = 1
+
+
+class User(typesystem.Object):
+    properties = {
+        'username': Username,
+        'password': typesystem.String,
+    }

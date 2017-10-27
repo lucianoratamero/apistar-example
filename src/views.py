@@ -29,3 +29,17 @@ def listar_produtos(nota: schemas.Nota, session: Session):
 
 def valida_cpf(cpf: schemas.CPF):
     return cpf
+
+
+def criar_usuario(user: schemas.User, session: Session):
+    if not user:
+        return
+    db_user = session.User.objects.create_user(**user)
+    return schemas.User(db_user.__dict__)
+
+
+def listar_usuarios(username: schemas.Username, session: Session):
+    usuarios = session.User.objects.all()
+    if username is not None:
+        usuarios = usuarios.filter(username=username)
+    return [schemas.User(db_user.__dict__) for db_user in usuarios]

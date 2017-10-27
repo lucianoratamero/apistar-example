@@ -12,7 +12,7 @@ settings = {
             'NAME': 'db.sqlite3',
         }
     },
-    'INSTALLED_APPS': ['src', ]
+    'INSTALLED_APPS': ['src', 'django.contrib.auth', 'django.contrib.contenttypes', ]
 }
 
 
