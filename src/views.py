@@ -1,5 +1,6 @@
 
 from apistar import http
+from apistar.interfaces import Auth
 from apistar.backends.django_orm import Session
 
 from src import schemas
@@ -9,6 +10,13 @@ def welcome(name=None):
     if name is None:
         return {'message': 'Welcome to API Star!'}
     return {'message': 'Welcome to API Star, %s!' % name}
+
+
+def me(auth: Auth):
+    return {
+        "is_authenticated": auth.is_authenticated(),
+        "username": auth.get_display_name(),
+    }
 
 
 def criar_produto(produto: schemas.Produto, session: Session):

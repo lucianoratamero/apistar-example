@@ -6,6 +6,7 @@ from src import views
 
 routes = [
     Route('/', 'GET', views.welcome),
+    Route('/me', 'POST', views.me, name='me'),
     Route('/criar-produto', 'POST', views.criar_produto, name='criar_produto'),
     Route('/listar-produtos', 'GET', views.listar_produtos, name='listar_produtos'),
     Route('/valida-cpf', 'POST', views.valida_cpf, name='valida_cpf'),
