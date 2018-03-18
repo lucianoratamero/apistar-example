@@ -1,6 +1,7 @@
 
-from apistar import http
+from apistar import http, annotate
 from apistar.interfaces import Auth
+from apistar.permissions import IsAuthenticated
 from apistar.backends.django_orm import Session
 
 from src import schemas
@@ -46,6 +47,7 @@ def criar_usuario(user: schemas.User, session: Session):
     return schemas.User(db_user.__dict__)
 
 
+@annotate(permissions=[IsAuthenticated()])
 def listar_usuarios(username: schemas.Username, session: Session):
     usuarios = session.User.objects.all()
     if username is not None:
