@@ -3,6 +3,7 @@ from apistar.backends import django_orm
 from apistar.frameworks.wsgi import WSGIApp as App
 
 from src.routes import routes
+from src.auth import BasicDjangoAuthentication
 
 
 settings = {
@@ -12,7 +13,8 @@ settings = {
             'NAME': 'db.sqlite3',
         }
     },
-    'INSTALLED_APPS': ['src', 'django.contrib.auth', 'django.contrib.contenttypes', ]
+    'INSTALLED_APPS': ['src', 'django.contrib.auth', 'django.contrib.contenttypes', ],
+    'AUTHENTICATION': [BasicDjangoAuthentication()],
 }
 
 
